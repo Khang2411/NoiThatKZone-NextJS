@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Loading from './loading'
+import Head from 'next/head'
 
 export default function Checkouts() {
   const router = useRouter()
@@ -95,6 +96,9 @@ export default function Checkouts() {
 
   return (
     <>
+      <Head>
+        <title>Thanh toán đơn hàng</title>
+      </Head>
       <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>
         <Stack direction={{ xs: 'column-reverse', md: 'row' }} gap={2}>
           <Box flex={1} padding={'25px'}>

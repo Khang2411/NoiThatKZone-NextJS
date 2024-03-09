@@ -39,7 +39,7 @@ export default function SignUp() {
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
                 description: 'Đăng ký ngay để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
-                url: 'https://noithatkzone.shop/',
+                url: 'https://noithatkzone.online/register',
                 thumbnailUrl: 'seo-logo.jpg',
             }} />
             <Box

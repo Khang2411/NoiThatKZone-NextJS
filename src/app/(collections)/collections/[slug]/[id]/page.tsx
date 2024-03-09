@@ -52,7 +52,7 @@ export default function Collections({ params }: CollectionsProps) {
       <Seo data={{
           title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
           description: `Danh sách các loại nội thất trang trí trong và ngoài nước với nhiều mẫu mã.`,
-          url: 'https://noithatkzone.shop/',
+          url: 'https://noithatkzone.online',
           thumbnailUrl: 'seo-logo.jpg',
         }} />
        

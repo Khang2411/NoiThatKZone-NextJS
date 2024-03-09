@@ -24,8 +24,8 @@ export default function News() {
         <>
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
-                description: `Tin tức những phong cách thiết kê nội thất độc đáo. Nợi cập nhật những mậu thiết kế nội thất đẹp`,
-                url: 'https://noithatkzone.shop/',
+                description: `Tin tức những phong cách thiết kê nội thất độc đáo. Nợi cập nhật những mẫu thiết kế nội thất đẹp`,
+                url: 'https://noithatkzone.online',
                 thumbnailUrl: 'seo-logo.jpg',
             }} />
 

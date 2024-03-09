@@ -16,7 +16,7 @@ export default function Seo({ data }: SeoProps) {
 
     return (
         <Head>
-            <title>{title}</title>
+            <title>{title ? title : 'Nội Thất Kzone'}</title>
             <meta name="title" content={title} />
             <meta name="description" content={description} />
 

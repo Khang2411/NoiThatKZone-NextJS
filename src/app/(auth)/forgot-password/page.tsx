@@ -12,6 +12,7 @@ import * as yup from 'yup';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
+import Head from 'next/head';
 
 type ForgotPasswordPayload = {
     email: string
@@ -55,39 +56,44 @@ export default function ForgotPassword() {
         }
     }
     return (
-        <Box
-            sx={{
-                marginTop: 8,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                height: '90vh',
-                backgroundColor: '#ffffff',
-            }}
-        >
-            <ToastContainer />
+        <>
+            <Head>
+                <title>Lấy lại mật khẩu</title>
+            </Head>
 
-            <Avatar sx={{ m: 1, bgcolor: '#3982aa' }}>
-                <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h5" variant="h5">
-                Lấy lại mật khẩu
-            </Typography>
-            <Box component="form" onSubmit={handleSubmit(handleEmailSubmit)} sx={{ mt: 3 }}>
-                <InputField name="email" label="Email" control={control} sx={{ marginBlockEnd: '15px' }} />
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    height: '90vh',
+                    backgroundColor: '#ffffff',
+                }}
+            >
+                <ToastContainer />
 
-                <Button
-                    type="submit"
-                    variant="contained"
-                    disabled={isSubmitting}
-                    startIcon={isSubmitting ? <CircularProgress color="inherit" size="1em" /> : null}
-                    sx={{
-                        mt: 3, mb: 2, backgroundColor: 'rgb(229 231 235) !important',
-                        color: '#000000', fontWeight: '600', float: 'right', letterSpacing: '0.1em', fontSize: '0.75rem'
-                    }}>
-                    Xác thực qua Email
-                </Button>
-            </Box>
-        </Box>
+                <Avatar sx={{ m: 1, bgcolor: '#3982aa' }}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h5" variant="h5">
+                    Lấy lại mật khẩu
+                </Typography>
+                <Box component="form" onSubmit={handleSubmit(handleEmailSubmit)} sx={{ mt: 3 }}>
+                    <InputField name="email" label="Email" control={control} sx={{ marginBlockEnd: '15px' }} />
+
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        disabled={isSubmitting}
+                        startIcon={isSubmitting ? <CircularProgress color="inherit" size="1em" /> : null}
+                        sx={{
+                            mt: 3, mb: 2, backgroundColor: 'rgb(229 231 235) !important',
+                            color: '#000000', fontWeight: '600', float: 'right', letterSpacing: '0.1em', fontSize: '0.75rem'
+                        }}>
+                        Xác thực qua Email
+                    </Button>
+                </Box>
+            </Box> </>
     );
 }

@@ -63,7 +63,7 @@ export default function ProductDetail({ params }: { params: { id: number } }) {
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
                 description: `Chi tiết sản phẩm nội thất. Xem và đánh giá sản phẩm`,
-                url: 'https://noithatkzone.shop/',
+                url: 'https://noithatkzone.online',
                 thumbnailUrl: 'seo-logo.jpg',
             }} />
 

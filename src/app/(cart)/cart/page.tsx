@@ -9,6 +9,7 @@ import { useMemo, useState } from 'react';
 import Loading from './loading';
 import { ResponseCoupon } from '@/models';
 import Error from './error';
+import Head from 'next/head';
 
 export default function Cart() {
     const [stateCart, setStateCart] = useState(typeof window !== 'undefined' && JSON.parse(localStorage.getItem('cart') || '{}'))
@@ -115,6 +116,9 @@ export default function Cart() {
 
     return (
         <Box>
+            <Head>
+                <title>Giỏ hàng Kzone</title>
+            </Head>
             <Box component={'section'} sx={{ width: '100%', maxWidth: '1920px', margin: 'auto', paddingBlockStart: '55px' }}>
                 <Box textAlign={'center'}><Typography variant='h4' color={'#415b80'} fontWeight={600} marginBlockEnd={'15px'}>Giỏ Hàng</Typography></Box>
                 {(isLoadingCart === false) && <Stack direction={{ xs: 'column', md: 'row' }} gap={2}>
