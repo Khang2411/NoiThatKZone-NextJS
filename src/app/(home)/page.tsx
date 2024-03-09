@@ -13,6 +13,7 @@ import Link from 'next/link'
 import Loading from './Loading'
 import Seo from '@/components/common/Seo'
 
+
 export default function Home() {
     const { data: dataCollection } = useCollectionHomeList({})
     const { data: dataProduct } = useBestSeller({})
@@ -26,8 +27,8 @@ export default function Home() {
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
                 description: 'Nội thất được cung cấp bởi nguồn hàng đa dạng trong và ngoài nước với tiêu chi chắc chắn, bền bỉ.',
-                url: 'https://noithatkzone.online',
-                thumbnailUrl: 'seo-logo.jpg',
+                url: `${window.location}`,
+                thumbnailUrl: '/seo-logo.jpg',
             }} />
 
             <Box>

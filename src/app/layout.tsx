@@ -2,7 +2,17 @@ import { Footer, Header, NextAuthProvider, ProgressBar, Slogan, Swr } from '@/co
 import { Box } from '@mui/material'
 import { Fredoka } from 'next/font/google'
 import './globals.css'
+import type { Metadata } from 'next'
+
 const fredoka = Fredoka({ subsets: ['latin'] })
+export const metadata: Metadata = {
+  title: {
+    default: 'Nội Thất KZone',
+    template: '%s|Nội Thất KZone'
+  },
+  description: '%s|Nội Thất KZone hãy tạo không gian sống thoải mái',
+  keywords: ['NoiThatKZone', 'Nội Thất', 'Nhà cửa'],
+}
 
 export default function RootLayout({
   children

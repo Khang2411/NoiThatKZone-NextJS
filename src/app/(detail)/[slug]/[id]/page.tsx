@@ -61,10 +61,10 @@ export default function ProductDetail({ params }: { params: { id: number } }) {
     return (
         <>
             <Seo data={{
-                title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
-                description: `Chi tiết sản phẩm nội thất. Xem và đánh giá sản phẩm`,
-                url: 'https://noithatkzone.online',
-                thumbnailUrl: 'seo-logo.jpg',
+                title: `${product?.name}`,
+                description: `${product?.name} - Hàng sẽ được xem kỹ khi giao hàng cho khách. Giao hàng toàn quốc.`,
+                url: `${window.location}`,
+                thumbnailUrl: `${product?.thumbnail}`,
             }} />
 
             <Box component='section'>

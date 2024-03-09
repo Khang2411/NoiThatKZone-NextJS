@@ -12,7 +12,7 @@ type Props = {
 export function NewsCard({ news }: Props) {
     return (
         <Box>
-            <Link href={`/news/${news.slug}?newsId=${news.id}`}>
+            <Link href={`/news/${news.slug}/${news.id}`}>
                 <Image
                     src={news.thumbnail}
                     alt="Picture of the blog"

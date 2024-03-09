@@ -2,15 +2,11 @@
 import { AccountForm } from '@/components/auth';
 import { useAuth } from '@/hook';
 import { Avatar, Box, Stack, Typography } from '@mui/material';
-import { usePathname, useRouter } from 'next/navigation';
 import Loading from './loading';
 
 export default function Account() {
     const { profile, isLoading, error } = useAuth()
-    const router = useRouter()
-    const pathname = usePathname()
-
-    // if (error) return router.push(`/login?back_to=${encodeUrl(pathname)}`)
+   
     if (isLoading) return <Box><Loading></Loading></Box>;
 
     return (

@@ -96,9 +96,6 @@ export default function Checkouts() {
 
   return (
     <>
-      <Head>
-        <title>Thanh toán đơn hàng</title>
-      </Head>
       <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>
         <Stack direction={{ xs: 'column-reverse', md: 'row' }} gap={2}>
           <Box flex={1} padding={'25px'}>

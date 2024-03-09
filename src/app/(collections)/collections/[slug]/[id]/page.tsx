@@ -50,12 +50,12 @@ export default function Collections({ params }: CollectionsProps) {
   return (
     <>
       <Seo data={{
-          title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
-          description: `Danh sách các loại nội thất trang trí trong và ngoài nước với nhiều mẫu mã.`,
-          url: 'https://noithatkzone.online',
-          thumbnailUrl: 'seo-logo.jpg',
-        }} />
-       
+        title: `${dataCollection?.name}`,
+        description: `${dataCollection?.name} - Những nội thất trong và ngoài nước được lựa chọn kỹ.`,
+        url: `${window.location}`,
+        thumbnailUrl: `${dataCollection?.thumbnail}`,
+      }} />
+
       <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>
         <Box paddingBlock={'15px'}>
           <BreadcrumbList breadcrumb={dataCollection}></BreadcrumbList>

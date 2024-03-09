@@ -50,12 +50,12 @@ export default function SignInSide() {
     return (
         <>
             <Seo data={{
-                    title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
-                    description: 'Đăng nhập để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
-                    url: 'https://noithatkzone.online/login',
-                    thumbnailUrl: 'seo-logo.jpg',
-                }}/>
-                
+                title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
+                description: 'Đăng nhập để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
+                url: `${window.location}`,
+                thumbnailUrl: '/seo-logo.jpg',
+            }} />
+
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid
