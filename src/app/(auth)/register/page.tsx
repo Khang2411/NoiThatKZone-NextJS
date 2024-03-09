@@ -1,5 +1,6 @@
 'use client'
 import { RegisterForm } from '@/components/auth';
+import Seo from '@/components/common/Seo';
 import { useAuth } from '@/hook';
 import { useRegionList } from '@/hook/use-region';
 import { RegisterPayload } from '@/models';
@@ -34,32 +35,40 @@ export default function SignUp() {
         }
     }
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                height: '100vh',
-                backgroundColor: '#ffffff',
-                marginBottom: '10px'
-            }}>
-            <ToastContainer />
-            <Avatar sx={{ m: 2, bgcolor: '#3982aa' }}>
-                <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-                Đăng ký
-            </Typography>
-            <Box sx={{ mt: 3 }}>
-                <RegisterForm onSubmit={handleRegisterSubmit} cities={cities?.data}></RegisterForm>
-                <Grid container justifyContent="flex-end">
-                    <Grid item>
-                        <Link href="/login" variant="body2">
-                            Bạn đã có tài khoản? Đăng nhập
-                        </Link>
+        <>
+            <Seo data={{
+                title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
+                description: 'Đăng ký ngay để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
+                url: 'https://noithatkzone.shop/',
+                thumbnailUrl: 'seo-logo.jpg',
+            }} />
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    height: '100vh',
+                    backgroundColor: '#ffffff',
+                    marginBottom: '10px'
+                }}>
+                <ToastContainer />
+                <Avatar sx={{ m: 2, bgcolor: '#3982aa' }}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Đăng ký
+                </Typography>
+                <Box sx={{ mt: 3 }}>
+                    <RegisterForm onSubmit={handleRegisterSubmit} cities={cities?.data}></RegisterForm>
+                    <Grid container justifyContent="flex-end">
+                        <Grid item>
+                            <Link href="/login" variant="body2">
+                                Bạn đã có tài khoản? Đăng nhập
+                            </Link>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Box>
             </Box>
-        </Box>
+        </>
     );
 }

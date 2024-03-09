@@ -1,5 +1,6 @@
 'use client'
 import { LoginForm } from '@/components/auth';
+import Seo from '@/components/common/Seo';
 import { useAuth } from '@/hook';
 import { LoginPayload } from '@/models';
 import { decodeUrl } from '@/utils/url';
@@ -47,80 +48,89 @@ export default function SignInSide() {
     }
 
     return (
-        <Grid container component="main" sx={{ height: '100vh' }}>
-            <CssBaseline />
-            <Grid
-                item
-                xs={false}
-                sm={4}
-                md={7}
-                sx={{
-                    backgroundImage: 'url(https://nhaxinh.com/wp-content/uploads/2022/09/banner-phong-an-nha-xinh-12-9-22.jpg)',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            />
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <Box
+        <>
+            <Seo data={{
+                    title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
+                    description: 'Đăng nhập để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
+                    url: 'https://noithatkzone.shop/',
+                    thumbnailUrl: 'seo-logo.jpg',
+                }}/>
+                
+            <Grid container component="main" sx={{ height: '100vh' }}>
+                <CssBaseline />
+                <Grid
+                    item
+                    xs={false}
+                    sm={4}
+                    md={7}
                     sx={{
-                        my: 8,
-                        mx: 4,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
+                        backgroundImage: 'url(https://nhaxinh.com/wp-content/uploads/2022/09/banner-phong-an-nha-xinh-12-9-22.jpg)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
                     }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: '#3982aa' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Đăng Nhập
-                    </Typography>
-                    <Box sx={{ mt: 1 }}>
-                        <LoginForm onSubmit={handleLoginSubmit}></LoginForm>
+                />
+                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                    <Box
+                        sx={{
+                            my: 8,
+                            mx: 4,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Avatar sx={{ m: 1, bgcolor: '#3982aa' }}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Đăng Nhập
+                        </Typography>
+                        <Box sx={{ mt: 1 }}>
+                            <LoginForm onSubmit={handleLoginSubmit}></LoginForm>
 
-                        <Grid container marginTop={1}>
-                            <Grid item xs>
-                                <Link href="/forgot-password" variant="body2">
-                                    Quên mật khẩu
-                                </Link>
+                            <Grid container marginTop={1}>
+                                <Grid item xs>
+                                    <Link href="/forgot-password" variant="body2">
+                                        Quên mật khẩu
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link href="/register" variant="body2">
+                                        {"Bạn chưa có tài khoản? Đăng ký"}
+                                    </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item>
-                                <Link href="/register" variant="body2">
-                                    {"Bạn chưa có tài khoản? Đăng ký"}
-                                </Link>
-                            </Grid>
-                        </Grid>
-                        <Box sx={{
-                            '& > button': {
-                                mt: 1,
-                                borderRadius: '8px',
-                                backgroundColor: '#ffffff !important',
-                                width: '100%',
-                                color: '#000000',
-                                border: '1px solid #222222',
-                            }
-                        }}>
-                            <Button
-                                onClick={() => { onClick('google') }}
-                                type="submit"
-                                variant="contained">
-                                <FcGoogle size={20} />
-                                <Typography fontSize={14} fontWeight={600} sx={{ flexGrow: 1 }}>Tiếp tục với Google</Typography>
-                            </Button>
-                            <Button
-                                onClick={() => { onClick('facebook') }}
-                                type="submit"
-                                variant="contained">
-                                <AiFillFacebook color='rgb(39,128,243)' size={20} />
-                                <Typography fontSize={14} fontWeight={600} sx={{ flexGrow: 1 }}>Tiếp tục với Facebook</Typography>
-                            </Button>
+                            <Box sx={{
+                                '& > button': {
+                                    mt: 1,
+                                    borderRadius: '8px',
+                                    backgroundColor: '#ffffff !important',
+                                    width: '100%',
+                                    color: '#000000',
+                                    border: '1px solid #222222',
+                                }
+                            }}>
+                                <Button
+                                    onClick={() => { onClick('google') }}
+                                    type="submit"
+                                    variant="contained">
+                                    <FcGoogle size={20} />
+                                    <Typography fontSize={14} fontWeight={600} sx={{ flexGrow: 1 }}>Tiếp tục với Google</Typography>
+                                </Button>
+                                <Button
+                                    onClick={() => { onClick('facebook') }}
+                                    type="submit"
+                                    variant="contained">
+                                    <AiFillFacebook color='rgb(39,128,243)' size={20} />
+                                    <Typography fontSize={14} fontWeight={600} sx={{ flexGrow: 1 }}>Tiếp tục với Facebook</Typography>
+                                </Button>
+                            </Box>
                         </Box>
                     </Box>
-                </Box>
+                </Grid>
+                <ToastContainer />
             </Grid>
-            <ToastContainer />
-        </Grid>
+        </>
     );
 }

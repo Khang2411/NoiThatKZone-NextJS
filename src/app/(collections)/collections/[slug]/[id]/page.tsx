@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { useCallback } from 'react'
 import Loading from './loading'
+import Seo from '@/components/common/Seo'
 
 type CollectionsProps = {
   params: { id: number, slug: string }
@@ -48,6 +49,13 @@ export default function Collections({ params }: CollectionsProps) {
 
   return (
     <>
+      <Seo data={{
+          title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
+          description: `Danh sách các loại nội thất trang trí trong và ngoài nước với nhiều mẫu mã.`,
+          url: 'https://noithatkzone.shop/',
+          thumbnailUrl: 'seo-logo.jpg',
+        }} />
+       
       <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>
         <Box paddingBlock={'15px'}>
           <BreadcrumbList breadcrumb={dataCollection}></BreadcrumbList>
