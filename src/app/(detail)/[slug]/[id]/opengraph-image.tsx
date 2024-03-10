@@ -2,7 +2,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
- 
+
 export const alt = 'Seo Product'
 
 export const size = {
@@ -22,7 +22,6 @@ export default async function Image({ params }: { params: { id: number } }) {
           width: "100%",
           height: "100%",
           display: "flex",
-          padding: '10px',
           alignItems: "center",
           justifyContent: "space-between",
         }}
@@ -33,7 +32,7 @@ export default async function Image({ params }: { params: { id: number } }) {
           height={500}
           alt="devtomars blog"
         />
-        <h2>{post.name}</h2>
+        <h2 style={{ padding: '15px'}}>{post.name}</h2>
       </div>
     ),
     { ...size }
