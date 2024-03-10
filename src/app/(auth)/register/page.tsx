@@ -39,8 +39,6 @@ export default function SignUp() {
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
                 description: 'Đăng ký ngay để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
-                url: `${typeof window !== 'undefined' && window.location}`,
-                thumbnailUrl: 'seo-logo.jpg',
             }} />
             <Box
                 sx={{

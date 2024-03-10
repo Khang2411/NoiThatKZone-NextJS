@@ -52,8 +52,6 @@ export default function SignInSide() {
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
                 description: 'Đăng nhập để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
-                url: `${typeof window !== 'undefined' && window.location}`,
-                thumbnailUrl: '/seo-logo.jpg',
             }} />
 
             <Grid container component="main" sx={{ height: '100vh' }}>

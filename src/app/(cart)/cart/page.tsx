@@ -118,9 +118,7 @@ export default function Cart() {
         <>
             <Seo data={{
                 title: 'Giỏ hàng',
-                description: 'Giò hàng nội thất kzone',
-                url: `${typeof window !== 'undefined' && window.location}`,
-                thumbnailUrl: `/seo-logo.jpg`,
+                description: 'Giò hàng nội thất kzone'
             }} />
             <Box>
                 <Box component={'section'} sx={{ width: '100%', maxWidth: '1920px', margin: 'auto', paddingBlockStart: '55px' }}>

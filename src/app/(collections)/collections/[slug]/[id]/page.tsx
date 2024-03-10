@@ -52,8 +52,6 @@ export default function Collections({ params }: CollectionsProps) {
       <Seo data={{
         title: `${dataCollection?.name}`,
         description: `${dataCollection?.name} - Những nội thất trong và ngoài nước được lựa chọn kỹ.`,
-        url: `${typeof window !== 'undefined' && window.location}`,
-        thumbnailUrl: `${dataCollection?.thumbnail}`,
       }} />
 
       <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>

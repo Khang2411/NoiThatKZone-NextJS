@@ -19,8 +19,6 @@ export default function News({ params }: { params: { id: number } }) {
             <Seo data={{
                 title: `${postDetail?.data.title}`,
                 description: `Bài viết ${postDetail?.data.title}`,
-                url: `${typeof window !== 'undefined' && window.location}`,
-                thumbnailUrl: `${postDetail?.data.thumbnail}`,
             }} />
 
             <Box bgcolor={'#FCFAF6'}>
