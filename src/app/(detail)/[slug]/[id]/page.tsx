@@ -60,10 +60,10 @@ export default function ProductDetail({ params }: { params: { id: number } }) {
     if (isLoading) return <Box className="skeleton"><Loading></Loading></Box>;
     return (
         <>
-            <Seo data={{
+            {/* <Seo data={{
                 title: `${product?.name}`,
                 description: `${product?.name} - Hàng sẽ được xem kỹ khi giao hàng cho khách. Giao hàng toàn quốc.`,
-            }} />
+            }} /> */}
 
             <Box component='section'>
                 <ToastContainer />
