@@ -10,32 +10,39 @@ export const size = {
   height: 630,
 }
 
-export const contentType = 'image/png'
-
 export default async function Image({ params }: { params: { id: number } }) {
-  const post = await fetch(`https://admin.noithatkzone.shop/api/v1/listings/${params.id}`).then((res) => res.json())
+  const product = await fetch(`https://admin.noithatkzone.shop/api/v1/listings/${params.id}`).then((res) => res.json())
 
   return new ImageResponse(
     (
-      <div
-        style={{
-          background: "white",
-          color: "dark",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <img
-          src={post.thumbnail}
-          width={500}
-          height={500}
-          alt="devtomars blog"
-        />
-        <h2 style={{ padding: '15px'}}>{post.name}</h2>
-      </div>
+      <>
+        <div
+          style={{
+            background: "white",
+            color: "dark",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <img style={{ borderRight: "1px solid #e6e6e6", }}
+            src={product.thumbnail}
+            width={500}
+            height={500}
+            alt="product seo"
+          />
+
+          <h2 style={{ padding: '20px', width: '40%' }}>
+            <p style={{ display: "flex", flexDirection: "column-reverse" }}>
+              <p style={{ fontWeight: '600' }}>{product.name}</p>
+              <p style={{ opacity: '0.5' }}>{process.env.APP_NAME}</p>
+            </p>
+          </h2>
+        </div>
+      </>
+
     ),
     { ...size }
   );

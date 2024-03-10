@@ -32,7 +32,10 @@ const nextConfig = {
                 hostname: 'nhaxinh.com'
             }
         ],
-    }
+    },
+    env: {
+        APP_NAME: process.env.NEXT_PUBLIC_NAME,
+    },
 }
 
 module.exports = nextConfig

@@ -11,7 +11,7 @@ export const size = {
 }
 
 export default async function Image({ params }: { params: { id: number } }) {
-  const product = await fetch(`https://admin.noithatkzone.shop/api/v1/listings/${params.id}`).then((res) => res.json())
+  const collection = await fetch(`https://admin.noithatkzone.shop/api/v1/collection/${params.id}`).then((res) => res.json())
 
   return new ImageResponse(
     (
@@ -28,21 +28,20 @@ export default async function Image({ params }: { params: { id: number } }) {
           }}
         >
           <img style={{ borderRight: "1px solid #e6e6e6", }}
-            src={product.thumbnail}
+            src={collection.thumbnail}
             width={500}
             height={500}
-            alt="product seo"
+            alt="collection seo"
           />
 
-          <h2 style={{ padding: '20px', width: '40%'  }}>
+          <h2 style={{ padding: '20px', width: '40%' }}>
             <p style={{ display: "flex", flexDirection: "column-reverse" }}>
-              <p style={{ fontWeight: '600' }}>{product.name}</p>
+              <p style={{ fontWeight: '600' }}>{collection.name}</p>
               <p style={{ opacity: '0.5' }}>{process.env.APP_NAME}</p>
             </p>
           </h2>
         </div>
       </>
-
     ),
     { ...size }
   );
