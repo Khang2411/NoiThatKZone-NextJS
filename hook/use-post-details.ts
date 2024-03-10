@@ -1,8 +1,8 @@
+'use client'
 import { postApi } from '@/api-client'
 import { QueryKeys } from '@/constants'
 import { DetailParams } from '@/models'
 import useSWR, { SWRConfiguration } from 'swr'
-
 
 export interface UsePostDetailsProps {
     params: Partial<DetailParams>

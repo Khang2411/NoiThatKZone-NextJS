@@ -1,16 +1,15 @@
 'use client'
 import { CartList, CartTotal } from '@/components/cart';
+import Seo from '@/components/common/Seo';
 import { useAuth } from '@/hook';
 import { useCart } from '@/hook/use-cart';
 import { useCartDetails } from '@/hook/use-cart-details';
+import { ResponseCoupon } from '@/models';
 import { debounce } from '@/utils/debounce';
 import { Box, Stack, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
-import Loading from './loading';
-import { ResponseCoupon } from '@/models';
 import Error from './error';
-import Head from 'next/head';
-import Seo from '@/components/common/Seo';
+import Loading from './loading';
 
 export default function Cart() {
     const [stateCart, setStateCart] = useState(typeof window !== 'undefined' && JSON.parse(localStorage.getItem('cart') || '{}'))
@@ -120,7 +119,7 @@ export default function Cart() {
             <Seo data={{
                 title: 'Giỏ hàng',
                 description: 'Giò hàng nội thất kzone',
-                url: `${window.location}`,
+                url: `${typeof window !== 'undefined' && window.location}`,
                 thumbnailUrl: `/seo-logo.jpg`,
             }} />
             <Box>

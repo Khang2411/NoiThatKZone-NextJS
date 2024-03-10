@@ -14,20 +14,20 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { signIn } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Suspense, useEffect } from 'react';
 import { AiFillFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignInSide() {
-    const searchParams = useSearchParams()
+    const searchParams = new URLSearchParams(typeof window !== 'undefined'  ? window.location.search : '')
     const router = useRouter()
     const { isLoggedIn, login } = useAuth({})
 
     const onClick = (provider: 'google' | 'facebook') => {
-        const backTo = searchParams.get('back_to') ? decodeUrl(searchParams.get('back_to') as string) : '/'
+        const backTo = searchParams?.get('back_to') ? decodeUrl(searchParams?.get('back_to') as string) : '/'
         signIn(provider, { callbackUrl: backTo })
     }
 
@@ -40,7 +40,7 @@ export default function SignInSide() {
     async function handleLoginSubmit(payload: LoginPayload) {
         try {
             await login(payload)
-            const backTo = searchParams.get('back_to') ? decodeUrl(searchParams.get('back_to') as string) : '/'
+            const backTo = searchParams?.get('back_to') ? decodeUrl(searchParams?.get('back_to') as string) : '/'
             router.push(backTo)
         } catch (error: unknown) {
             toast.error('Tài khoản hoặc mật khẩu không chính xác.')
@@ -52,7 +52,7 @@ export default function SignInSide() {
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
                 description: 'Đăng nhập để nhận nhiều ưu đãi chỉ dành riêng cho khách hàng.',
-                url: `${window.location}`,
+                url: `${typeof window !== 'undefined' && window.location}`,
                 thumbnailUrl: '/seo-logo.jpg',
             }} />
 
@@ -87,8 +87,9 @@ export default function SignInSide() {
                             Đăng Nhập
                         </Typography>
                         <Box sx={{ mt: 1 }}>
-                            <LoginForm onSubmit={handleLoginSubmit}></LoginForm>
-
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <LoginForm onSubmit={handleLoginSubmit}></LoginForm>
+                            </Suspense>
                             <Grid container marginTop={1}>
                                 <Grid item xs>
                                     <Link href="/forgot-password" variant="body2">

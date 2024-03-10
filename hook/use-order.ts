@@ -1,3 +1,4 @@
+'use client'
 import useSWR, { SWRConfiguration } from 'swr'
 import { QueryKeys } from '@/constants'
 import { orderApi } from '@/api-client'

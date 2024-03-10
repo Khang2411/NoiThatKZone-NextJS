@@ -1,7 +1,7 @@
+'use client'
 import { bannerApi } from '@/api-client'
 import { QueryKeys } from '@/constants'
 import useSWR, { SWRConfiguration } from 'swr'
-
 
 export interface UseBannerProps {
     options?: SWRConfiguration

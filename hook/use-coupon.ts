@@ -1,7 +1,7 @@
+'use client'
 import { cartApi } from '@/api-client'
+import { QueryKeys } from '@/constants'
 import useSWR, { SWRConfiguration } from 'swr'
-import { QueryKeys, StorageKeys } from '@/constants'
-import { ListParams } from '@/models'
 
 export interface UseCouponProps {
     params?: any

@@ -28,13 +28,14 @@ export function UserMenu() {
 
     return (
         <Box>
-            {isClient && isLoggedIn ? <Avatar alt="Remy Sharp" src={profile?.data?.profile_photo_url} sx={{ width: 28, height: 28 ,cursor: 'pointer'}} onClick={toggleOpen}/>
+            {isClient && isLoggedIn ? <Avatar alt="Remy Sharp" src={profile?.data?.profile_photo_url} sx={{ width: 28, height: 28, cursor: 'pointer' }} onClick={toggleOpen} />
                 : <AccountCircleIcon color="action" onClick={toggleOpen} sx={{ cursor: 'pointer' }} />}
 
             {isOpen && (
                 <Box sx={{
                     position: 'absolute',
-                    right: 15,
+                    marginTop: '10px',
+                    right: '35px',
                     padding: '8px 0px',
                     backgroundColor: '#fff',
                     zIndex: '999',

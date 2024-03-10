@@ -52,7 +52,7 @@ export default function Collections({ params }: CollectionsProps) {
       <Seo data={{
         title: `${dataCollection?.name}`,
         description: `${dataCollection?.name} - Những nội thất trong và ngoài nước được lựa chọn kỹ.`,
-        url: `${window.location}`,
+        url: `${typeof window !== 'undefined' && window.location}`,
         thumbnailUrl: `${dataCollection?.thumbnail}`,
       }} />
 

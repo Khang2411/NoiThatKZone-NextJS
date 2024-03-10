@@ -1,3 +1,4 @@
+'use client'
 import { postApi } from '@/api-client'
 import { QueryKeys } from '@/constants'
 import { ListParams } from '@/models'

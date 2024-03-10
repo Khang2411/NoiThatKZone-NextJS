@@ -1,8 +1,7 @@
+'use client'
 import { cartApi } from '@/api-client'
 import { QueryKeys } from '@/constants'
-import { DetailParams } from '@/models'
 import useSWR, { SWRConfiguration } from 'swr'
-
 
 export interface useCartDetails {
     options?: SWRConfiguration

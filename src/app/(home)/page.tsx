@@ -27,7 +27,7 @@ export default function Home() {
             <Seo data={{
                 title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
                 description: 'Nội thất được cung cấp bởi nguồn hàng đa dạng trong và ngoài nước với tiêu chi chắc chắn, bền bỉ.',
-                url: `${window.location}`,
+                url: `${typeof window !== 'undefined' && window.location}`,
                 thumbnailUrl: '/seo-logo.jpg',
             }} />
 

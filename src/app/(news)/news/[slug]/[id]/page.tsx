@@ -19,7 +19,7 @@ export default function News({ params }: { params: { id: number } }) {
             <Seo data={{
                 title: `${postDetail?.data.title}`,
                 description: `Bài viết ${postDetail?.data.title}`,
-                url: `${window.location}`,
+                url: `${typeof window !== 'undefined' && window.location}`,
                 thumbnailUrl: `${postDetail?.data.thumbnail}`,
             }} />
 

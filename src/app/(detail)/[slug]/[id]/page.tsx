@@ -63,7 +63,7 @@ export default function ProductDetail({ params }: { params: { id: number } }) {
             <Seo data={{
                 title: `${product?.name}`,
                 description: `${product?.name} - Hàng sẽ được xem kỹ khi giao hàng cho khách. Giao hàng toàn quốc.`,
-                url: `${window.location}`,
+                url: `${typeof window !== 'undefined' && window.location}`,
                 thumbnailUrl: `${product?.thumbnail}`,
             }} />
 

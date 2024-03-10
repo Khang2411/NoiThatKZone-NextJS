@@ -1,3 +1,4 @@
+'use client'
 import { authApi } from '@/api-client'
 import { QueryKeys, StorageKeys } from '@/constants'
 import { LoginPayload, RegisterPayload } from '@/models'

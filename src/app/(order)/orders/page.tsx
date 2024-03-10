@@ -94,7 +94,7 @@ export default function Order() {
           </Tabs>
         </Box>
 
-        {(orderAllList?.data.length < 1) &&
+        {(orderAllList?.data.length === 0) &&
           <Stack justifyContent={'space-between'} alignItems={'center'}>
             <Box><FindInPageIcon color="primary" sx={{ fontSize: '120px' }} /></Box>
             <Box><Typography variant='h5'>Chưa có đơn hàng</Typography></Box>
@@ -104,11 +104,11 @@ export default function Order() {
           <OrderList orderList={orderAllList?.data}></OrderList>
         </CustomTabPanel>
 
-        {/* {orders.length < 1 &&
+        {(value !== 0 && orders.length === 0) &&
           <Stack justifyContent={'space-between'} alignItems={'center'}>
             <Box><FindInPageIcon color="primary" sx={{ fontSize: '120px' }} /></Box>
             <Box><Typography variant='h5'>Chưa có đơn hàng</Typography></Box>
-          </Stack>} */}
+          </Stack>}
 
         <CustomTabPanel value={value} index={1}>
           <OrderList orderList={orders}></OrderList>
