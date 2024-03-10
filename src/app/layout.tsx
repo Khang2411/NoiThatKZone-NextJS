@@ -8,6 +8,7 @@ const fredoka = Fredoka({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Nội Thất KZone',
   keywords: ['NoiThatKZone', 'Nội Thất', 'Nhà cửa'],
+  metadataBase: new URL("https://admin.noithatkzone.shop/"),
 }
 
 export default function RootLayout({
