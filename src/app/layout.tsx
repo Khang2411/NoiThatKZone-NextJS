@@ -6,11 +6,7 @@ import type { Metadata } from 'next'
 
 const fredoka = Fredoka({ subsets: ['latin'] })
 export const metadata: Metadata = {
-  title: {
-    default: 'Nội Thất KZone',
-    template: 'Nội Thất KZone'
-  },
-  description: 'Nội Thất KZone hãy tạo không gian sống thoải mái',
+  title: 'Nội Thất KZone',
   keywords: ['NoiThatKZone', 'Nội Thất', 'Nhà cửa'],
 }
 

@@ -25,10 +25,8 @@ export default function Home() {
     return (
         <>
             <Seo data={{
-                title: 'Nội Thất KZone — Hãy tạo không gian sống thoải mái',
+                title: 'Nội Thất KZone | Mua hàng chất lượng',
                 description: 'Nội thất được cung cấp bởi nguồn hàng đa dạng trong và ngoài nước với tiêu chi chắc chắn, bền bỉ.',
-                url: `${typeof window !== 'undefined' && window.location}`,
-                thumbnailUrl: 'https://res.cloudinary.com/dqsfwus9c/image/upload/v1710040078/seo-logo_nijxno.jpg',
             }} />
 
             <Box>
