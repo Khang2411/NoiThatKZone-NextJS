@@ -1,3 +1,5 @@
+import Head from "next/head"
+
 type SeoData = {
     title: string
     description: string
@@ -13,7 +15,7 @@ export default function Seo({ data }: SeoProps) {
     const { title, description, url, thumbnailUrl } = data
 
     return (
-        <>
+        <Head>
             <title>{title}</title>
             <meta name="title" content={title} />
             <meta name="description" content={description} />
@@ -29,6 +31,6 @@ export default function Seo({ data }: SeoProps) {
             <meta property="twitter:title" content={title} />
             <meta property="twitter:description" content={description} />
             <meta property="twitter:image" content={thumbnailUrl} />
-        </>
+        </Head>
     )
 }
