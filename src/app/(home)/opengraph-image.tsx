@@ -10,13 +10,13 @@ export const size = {
     height: 630,
 }
 
-export const contentType = 'image/png'
+export const contentType = 'image/jpg'
 
 // Image generation
 export default async function Image() {
     // Font
     const interSemiBold = fetch(
-        new URL('./seo.png', import.meta.url)
+        new URL('./seo.jpg', import.meta.url)
     ).then((res) => res.arrayBuffer())
 
     return new ImageResponse(
@@ -33,7 +33,7 @@ export default async function Image() {
                     justifyContent: 'center',
                 }}
             >
-                Trang chủ - NộiThất KZone
+                Trang chủ - Nội Thất KZone
             </div>
         ),
         // ImageResponse options
