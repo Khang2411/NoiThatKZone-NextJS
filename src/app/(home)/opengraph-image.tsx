@@ -10,13 +10,13 @@ export const size = {
     height: 630,
 }
 
-export const contentType = ['image/png', 'image/jpg']
+export const contentType = 'image/png'
 
 // Image generation
 export default async function Image() {
     // Font
     const interSemiBold = fetch(
-        new URL('./seo.jpg', import.meta.url)
+        new URL('./seo.png', import.meta.url)
     ).then((res) => res.arrayBuffer())
 
     return new ImageResponse(
