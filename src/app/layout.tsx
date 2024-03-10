@@ -8,9 +8,9 @@ const fredoka = Fredoka({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: {
     default: 'Nội Thất KZone',
-    template: '%s|Nội Thất KZone'
+    template: 'Nội Thất KZone'
   },
-  description: '%s|Nội Thất KZone hãy tạo không gian sống thoải mái',
+  description: 'Nội Thất KZone hãy tạo không gian sống thoải mái',
   keywords: ['NoiThatKZone', 'Nội Thất', 'Nhà cửa'],
 }
 
