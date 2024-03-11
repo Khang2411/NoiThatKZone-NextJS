@@ -94,13 +94,12 @@ export default function Order() {
           </Tabs>
         </Box>
 
-        {(orderAllList?.data.length === 0) &&
-          <Stack justifyContent={'space-between'} alignItems={'center'}>
-            <Box><FindInPageIcon color="primary" sx={{ fontSize: '120px' }} /></Box>
-            <Box><Typography variant='h5'>Chưa có đơn hàng</Typography></Box>
-          </Stack>}
-
         <CustomTabPanel value={value} index={0}>
+          {(!orderAllList?.data || orderAllList?.data.length === 0) &&
+            <Stack justifyContent={'space-between'} alignItems={'center'}>
+              <Box><FindInPageIcon color="primary" sx={{ fontSize: '120px' }} /></Box>
+              <Box><Typography variant='h5'>Chưa có đơn hàng</Typography></Box>
+            </Stack>}
           <OrderList orderList={orderAllList?.data}></OrderList>
         </CustomTabPanel>
 
