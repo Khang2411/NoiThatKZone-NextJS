@@ -8,9 +8,9 @@ export interface useCollectionHomeProps {
     enabled?: boolean
 }
 
-export function useCollectionHomeList({ options }: useCollectionHomeProps) {
+export function useCollectionHomeList({ options, enabled }: useCollectionHomeProps) {
     const swrResponse = useSWR(
-        [QueryKeys.GET_COLLECTION_LIST],
+        enabled ? [QueryKeys.GET_COLLECTION_LIST] : null,
         () => collectionApi.getAll(),
         {
             dedupingInterval: 30 * 1000, // 30s

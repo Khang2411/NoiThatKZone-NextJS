@@ -12,7 +12,6 @@ import * as yup from 'yup';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
-import Head from 'next/head';
 
 type ForgotPasswordPayload = {
     email: string
@@ -57,10 +56,6 @@ export default function ForgotPassword() {
     }
     return (
         <>
-            <Head>
-                <title>Lấy lại mật khẩu</title>
-            </Head>
-
             <Box
                 sx={{
                     marginTop: 8,
@@ -79,7 +74,7 @@ export default function ForgotPassword() {
                 <Typography component="h5" variant="h5">
                     Lấy lại mật khẩu
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit(handleEmailSubmit)} sx={{ mt: 3 }}>
+                <Box component="form" onSubmit={handleSubmit(handleEmailSubmit)} sx={{ mt: 3 }} padding={2}>
                     <InputField name="email" label="Email" control={control} sx={{ marginBlockEnd: '15px' }} />
 
                     <Button

@@ -1,10 +1,14 @@
+'use client'
 import { useCollectionHomeList } from '@/hook';
 import { Box, MenuItem, Tooltip, Typography } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
+import { usePathname } from 'next/navigation'
 
 export function HeaderCollection() {
-    const { data: dataCollections } = useCollectionHomeList({})
+    const pathname = usePathname()
+    console.log(pathname)
+    const { data: dataCollections } = useCollectionHomeList({ enabled: pathname === ('/reset-password' || '/forgot-password' || '/login' || "/register") ? false : true })
 
     return (
         <>

@@ -1,4 +1,4 @@
-import { Collection, ListResponse } from '@/models'
+import { Collection, ListResponse, Response } from '@/models'
 import axiosClient from './axios-client'
 
 export const collectionApi = {
@@ -6,7 +6,7 @@ export const collectionApi = {
 		return axiosClient.get('/v1/home/collections')
 	},
 
-	get(id: number): Promise<Collection> {
+	get(id: number): Promise<Response<Collection>> {
 		return axiosClient.get(`/v1/collections/${id}`)
 	},
 }

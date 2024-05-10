@@ -1,83 +1,74 @@
-'use client'
 import { BreadcrumbList } from '@/components/breadcrumb'
 import { ProductFeatureDescribe, ProductFeatureImage, ProductFeatureInfo, ProductFeatureReview, ProductFeatureSimilar } from '@/components/product'
-import { ReviewList } from '@/components/reviews'
-import { useAuth, useProductSimilar, useReviewList } from '@/hook'
-import { useProductDetails } from '@/hook/use-product-details'
-import { Box, Divider, Pagination, Stack } from '@mui/material'
-import { useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { ReviewList } from '@/components/reviews/ReviewList'
+import { Box, Divider, Stack } from '@mui/material'
+import type { Metadata, ResolvingMetadata } from 'next'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Loading from './loading'
-import Seo from '@/components/common/Seo'
 
-export default function ProductDetail({ params }: { params: { id: number } }) {
-    const [page, setPage] = useState(1)
-    const { data: product, isLoading } = useProductDetails({ productId: params.id })
-    const { data: productSimilar } = useProductSimilar({ productId: params.id })
-    const { profile, isLoggedIn } = useAuth()
+type Props = {
+    params: { id: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}
 
-    const filter = {
-        product_id: params.id,
-        page: page
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    // read route params
+    const id = params.id
+    // fetch data
+    const product = await getProduct(id)
+    return {
+        title: product.data.name,
+        description: product.data.name + 'Mua hàng qua mạng uy tín, tiện lợi. NoiThatKzone đảm bảo nhận hàng, hoặc được hoàn lại tiền Giao Hàng Miễn Phí. XEM NGAY!',
+        openGraph: {
+            title: product.data.name,
+            description: product.data.name + 'Mua hàng qua mạng uy tín, tiện lợi. NoiThatKzone đảm bảo nhận hàng, hoặc được hoàn lại tiền Giao Hàng Miễn Phí. XEM NGAY!',
+        },
     }
-    const { data: reviews, addReview, reply } = useReviewList({ params: filter })
-    const handleReviewSubmit = async (payload: { review: string, rating: number, user_id: number | undefined, product_id: number | undefined }) => {
-        if (payload.rating === 0) {
-            alert('Bạn chưa đánh giá lượt sao')
-        }
-        else if (payload.review === "") {
-            alert('Nội dung đánh giá không được trống')
-        }
-        else if (isLoggedIn === true) {
-            payload = { ...payload, user_id: profile?.data.id, product_id: params.id }
-            try {
-                await addReview(payload)
-                toast.success("Đánh giá thành công", { autoClose: 1000 })
-            } catch (err) {
-                console.log(err)
-                return
-            }
-        } else {
-            alert('Bạn phải đăng nhập để thực hiện chức năng này')
-        }
-    }
+}
 
-    const handleReplySubmit = async (payload: any) => {
-        payload = { ...payload, user_id: profile?.data.id, product_id: params.id, }
-        try {
-            await reply(payload)
-            toast.success("Trả lời thành công", { autoClose: 1000 })
-        } catch (err) {
-            console.log(err)
-            return
-        }
-    }
-    const handlePageChange = (event: any, value: any) => {
-        setPage(value)
-    };
+const getProduct = async (id: number | string) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/listings/${id}`, {
+        next: { revalidate: 300 }
+    })
+    return res.json();
+}
 
-    if (isLoading) return <Box className="skeleton"><Loading></Loading></Box>;
+const getProductSimilar = async (id: number) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/listings/${id}/similar`, {
+        next: { revalidate: 300 }
+    })
+    return res.json();
+}
+
+const getProductReviews = async (params: any) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviews?product_id=${params.product_id}&page=${params.page}`, { cache: 'no-store' })
+    return res.json();
+}
+
+export default async function ProductDetail({ params }: { params: { id: number } }) {
+    const product = await getProduct(params.id)
+    const productSimilar = await getProductSimilar(params.id)
+    const productReviews = await getProductReviews({ product_id: params.id, page: 1 })
+    console.log(productReviews)
+
     return (
         <>
-            <Seo data={{
-                title: `${product?.name}`,
-                description: `${product?.name} - Hàng sẽ được xem kỹ khi giao hàng cho khách. Giao hàng toàn quốc.`,
-            }} />
-
             <Box component='section'>
                 <ToastContainer />
                 <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto', padding: '20px' }}>
-                    <BreadcrumbList breadcrumb={product}></BreadcrumbList>
+                    <BreadcrumbList breadcrumb={product.data}></BreadcrumbList>
                     <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'} bgcolor={'#FFFFFF'}>
                         <Box width={{ xs: '100%', md: '43%' }}>
                             <Box position={'sticky'} top={'15px'} padding={'15px'}>
-                                <ProductFeatureImage productImages={[product.thumbnail]}></ProductFeatureImage>
+                                <ProductFeatureImage productImages={[product.data.thumbnail]}></ProductFeatureImage>
                             </Box>
                         </Box>
 
                         <Box width={{ xs: '100%', md: '55%' }}>
-                            <ProductFeatureInfo product={product} user={profile?.data}></ProductFeatureInfo>
+                            <ProductFeatureInfo product={product.data}></ProductFeatureInfo>
                         </Box>
                     </Stack>
                     <Divider></Divider>
@@ -87,21 +78,18 @@ export default function ProductDetail({ params }: { params: { id: number } }) {
                     </Box>
 
                     <Box marginBlockStart={'25px'}>
-                        <ProductFeatureDescribe describe={product?.describe}></ProductFeatureDescribe>
+                        <ProductFeatureDescribe describe={product.data.describe}></ProductFeatureDescribe>
                     </Box>
 
                     <Box marginBlockStart={'15px'}>
-                        <ProductFeatureReview onSubmit={handleReviewSubmit}></ProductFeatureReview>
+                        <ProductFeatureReview productId={params.id}></ProductFeatureReview>
                     </Box>
 
                     <Box marginBlockStart={'15px'}>
                         <Box component='section' marginBlockStart={'15px'}>
                             <Box boxShadow={'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;'} padding={'15px'}>
-                                <ReviewList onSubmit={handleReplySubmit} reviews={reviews?.data}></ReviewList>
+                                <ReviewList productId={params.id} lastPage={productReviews.last_page}></ReviewList>
                             </Box>
-                        </Box>
-                        <Box>
-                            <Pagination count={reviews?.last_page} shape="rounded" color="primary" sx={{ '& > ul': { justifyContent: 'center' } }} page={reviews?.current_page} onChange={handlePageChange} />
                         </Box>
                     </Box>
                 </Box>

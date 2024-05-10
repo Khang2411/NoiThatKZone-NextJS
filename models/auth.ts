@@ -20,12 +20,9 @@ export interface UserProfile {
 	email: string,
 	email_verified_at: string,
 	phone: string,
-	two_factor_confirmed_at: string,
-	current_team_id: number,
-	profile_photo_path: string,
 	created_at: string,
 	updated_at: string,
-	profile_photo_url: string,
+	profile_photo_url:string,
 	address: any
 }
 

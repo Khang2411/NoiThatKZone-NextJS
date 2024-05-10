@@ -46,17 +46,17 @@ export default function Collections({ params }: CollectionsProps) {
   };
 
   if (isLoading) return <Box className="skeleton"><Loading></Loading></Box>;
-
+  console.log(listings)
   return (
     <>
       <Seo data={{
-        title: `${dataCollection?.name}`,
-        description: `${dataCollection?.name} - Những nội thất trong và ngoài nước được lựa chọn kỹ.`,
+        title: `${dataCollection?.data.name}`,
+        description: `${dataCollection?.data.name} - Những nội thất trong và ngoài nước được lựa chọn kỹ.`,
       }} />
 
       <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>
         <Box paddingBlock={'15px'}>
-          <BreadcrumbList breadcrumb={dataCollection}></BreadcrumbList>
+          <BreadcrumbList breadcrumb={dataCollection?.data}></BreadcrumbList>
         </Box>
         <Stack direction={{ xs: 'column', md: 'row' }} gap={2}>
           <Box width={{ xs: '100%', md: '18%' }}>
@@ -65,7 +65,7 @@ export default function Collections({ params }: CollectionsProps) {
                 DANH MỤC
               </ListItem>
               <Divider />
-              {dataCollection?.collections?.map((item: any, index: React.Key | null | undefined) =>
+              {dataCollection?.data.collections?.map((item: any, index: React.Key | null | undefined) =>
                 <ListItem key={index} sx={{ '& .active': { color: '#415B82', borderBottom: '4px solid #415B82' } }}>
                   <Link href={`/collections/${item.slug}/${item.id}`} className={item.slug === params.slug ? 'active' : ""}>{item.name}</Link>
                 </ListItem>
@@ -75,9 +75,9 @@ export default function Collections({ params }: CollectionsProps) {
 
           <Box flex={1}>
             <Box>
-              {dataCollection?.banner &&
+              {dataCollection?.data.banner &&
                 <Image
-                  src={dataCollection?.banner}
+                  src={dataCollection?.data.banner}
                   alt='img-collections'
                   fill
                 />}
@@ -94,7 +94,7 @@ export default function Collections({ params }: CollectionsProps) {
           </Box>
         </Stack>
 
-        <Box>
+        <Box padding={2}>
           <Pagination count={listings?.last_page} shape="rounded" color="primary" sx={{ '& > ul': { justifyContent: 'center' } }} page={listings?.current_page} onChange={handleChange} />
         </Box>
       </Box>

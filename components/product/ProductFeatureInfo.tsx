@@ -3,7 +3,7 @@
 import { useAuth } from '@/hook';
 import { useCart } from '@/hook/use-cart';
 import { useCartDetails } from '@/hook/use-cart-details';
-import { ApiError, Product, UserProfile } from '@/models';
+import { ApiError, Product } from '@/models';
 import { useCartStore } from '@/store/CountCartStore';
 import AddIcon from '@mui/icons-material/Add';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
@@ -20,10 +20,9 @@ import { ProductFeatureAttent } from './ProductFeatureAttent';
 
 type FeatureInfoProps = {
   product: Product
-  user: UserProfile | undefined
 }
 
-export function ProductFeatureInfo({ product, user }: FeatureInfoProps) {
+export function ProductFeatureInfo({ product }: FeatureInfoProps) {
   const [state, setState] = useState(1)
   const { isLoggedIn } = useAuth({})
   const { checkStock, addToCart } = useCart({ enabled: false })

@@ -1,3 +1,4 @@
+'use client'
 import { InputField } from '@/components/form';
 import { useAuth } from '@/hook';
 import { yupResolver } from '@hookform/resolvers/yup';

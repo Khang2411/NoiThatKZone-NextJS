@@ -1,3 +1,4 @@
+'use client'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import React, { useState } from 'react'
 import { InputField } from '@/components/form'

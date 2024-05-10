@@ -56,7 +56,7 @@ export default function SignUp() {
                 <Typography component="h1" variant="h5">
                     Đăng ký
                 </Typography>
-                <Box sx={{ mt: 3 }}>
+                <Box sx={{ mt: 3 }} padding={2}>
                     <RegisterForm onSubmit={handleRegisterSubmit} cities={cities?.data}></RegisterForm>
                     <Grid container justifyContent="flex-end">
                         <Grid item>

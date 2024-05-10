@@ -28,4 +28,8 @@ export const authApi = {
 		return axiosClient.post('/v1/forgot-password', payload)
 	},
 
+	resetPassword(payload: { email: string, password: string, password_confirmation: string, token: string }) {
+		return axiosClient.post('/v1/reset-password', payload)
+	},
+
 }

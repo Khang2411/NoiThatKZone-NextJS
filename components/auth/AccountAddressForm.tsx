@@ -1,3 +1,4 @@
+'use client'
 import { useRegionList } from '@/hook/use-region'
 import { Cities, Districts, LoginPayload, Wards } from '@/models'
 import { yupResolver } from '@hookform/resolvers/yup'

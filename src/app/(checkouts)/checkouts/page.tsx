@@ -13,7 +13,6 @@ import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Loading from './loading'
-import Head from 'next/head'
 
 export default function Checkouts() {
   const router = useRouter()

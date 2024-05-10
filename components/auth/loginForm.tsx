@@ -1,3 +1,4 @@
+'use client'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Button, CircularProgress, IconButton, InputAdornment } from '@mui/material'
 import { Box } from '@mui/system'

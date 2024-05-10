@@ -10,7 +10,6 @@ export function Header() {
     const sm = useMediaQuery(theme.breakpoints.up('sm'));
     const pathname = usePathname()
 
-
     return (
         <>
             <Box component={'section'} sx={{ padding: "15px", height: '100%', borderBlockEnd: '1px solid #dedede' }} position={'relative'}>
@@ -18,9 +17,9 @@ export function Header() {
                     <Box>
                         <Logo></Logo>
                     </Box>
-                    {(pathname === '/login' || pathname === '/register' || pathname === '/forgot-password') ? "" :
+                    {(pathname === '/login' || pathname === '/register' || pathname === '/forgot-password' || pathname === '/reset-password') ? "" :
                         <Stack direction={{ xs: 'column', sm: "row" }} alignItems={'center'} gap={2} width={{ xs: '100%', sm: '30%' }}>
-                            <Search></Search>
+                            <Search />
                             <Stack direction="row" gap={1} justifyContent={'space-between'} alignItems={'center'}>
                                 <Cart></Cart>
                                 <UserMenu></UserMenu>

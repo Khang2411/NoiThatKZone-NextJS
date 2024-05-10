@@ -24,7 +24,7 @@ export function Search() {
     });
 
     const fetchSearch = async (value: string) => {
-        const fetchSearch = await fetch(`http://127.0.0.1:8000/api/v1/search/${value}`)
+        const fetchSearch = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/search/${value}`)
         const res = await fetchSearch.json();
         console.log(res)
         setSearch(res)

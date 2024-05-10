@@ -49,6 +49,11 @@ export function useAuth(options?: Partial<SWRConfiguration>) {
 		return forgotPassword
 	}
 
+	async function resetPassword(payload: { email: string, password: string, password_confirmation: string, token: string }) {
+		const forgotPassword = await authApi.resetPassword(payload)
+		return forgotPassword
+	}
+
 	async function socialLogin(payload: LoginPayload) {
 		const socialLogin = await authApi.socialLogin(payload)
 		Cookies.set('accessToken', socialLogin.data.token)
@@ -65,6 +70,7 @@ export function useAuth(options?: Partial<SWRConfiguration>) {
 		logout,
 		socialLogin,
 		forgotPassword,
+		resetPassword,
 		isLoggedIn: Boolean(profile?.data)
 	}
 }

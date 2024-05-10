@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 export function UserMenu() {
     const pathname = usePathname()
-    const { isLoggedIn, profile, logout, socialLogin } = useAuth()
+    const { isLoggedIn, profile, logout } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
     const [isClient, setIsClient] = useState(false)
 
