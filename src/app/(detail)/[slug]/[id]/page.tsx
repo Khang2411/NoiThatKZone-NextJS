@@ -30,21 +30,21 @@ export async function generateMetadata(
 }
 
 const getProduct = async (id: number | string) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/listings/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/api/v1/listings/${id}`, {
         next: { revalidate: 300 }
     })
     return res.json();
 }
 
 const getProductSimilar = async (id: number) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/listings/${id}/similar`, {
+    const res = await fetch(`${process.env.API_URL}/api/v1/listings/${id}/similar`, {
         next: { revalidate: 300 }
     })
     return res.json();
 }
 
 const getProductReviews = async (params: any) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviews?product_id=${params.product_id}&page=${params.page}`, { cache: 'no-store' })
+    const res = await fetch(`${process.env.API_URL}/api/v1/reviews?product_id=${params.product_id}&page=${params.page}`, { cache: 'no-store' })
     return res.json();
 }
 

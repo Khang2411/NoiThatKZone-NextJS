@@ -27,7 +27,7 @@ export async function generateMetadata(
 }
 
 const getPost = async (params: { id: number | string }) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/posts?id=${params.id}`, {
+    const res = await fetch(`${process.env.API_URL}/api/v1/posts?id=${params.id}`, {
         next: { revalidate: 300 }
     })
     return res.json();
