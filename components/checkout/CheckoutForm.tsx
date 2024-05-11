@@ -32,6 +32,7 @@ export function CheckoutForm({ cities, onSubmit }: CheckoutProps) {
             .required('Vui lòng nhập SĐT'),
         phone: yup
             .string()
+            .matches(/^(\+84|84|0)[0-9]{9}$/, 'SĐT không hợp lệ')
             .required('Vui lòng nhập SĐT'),
         fullname: yup
             .string()
@@ -71,7 +72,6 @@ export function CheckoutForm({ cities, onSubmit }: CheckoutProps) {
             paymentMethod: "",
         },
         resolver: yupResolver(isLoggedIn ? schemaLogin : schema),
-        mode: "onChange"
     });
 
     const handleChange = async (e: SelectChangeEvent<any>) => {
