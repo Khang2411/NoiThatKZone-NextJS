@@ -77,7 +77,7 @@ export default function Order() {
 
   return (
     <Box>
-      <Box sx={{ width: { sm: '100%', md: '70%' }, margin: 'auto' }}>
+      <Box sx={{ maxWidth: '1200px', width: '100%', margin: 'auto' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} variant="scrollable" scrollButtons="auto"
             onChange={handleChange} aria-label="basic tabs example" sx={{

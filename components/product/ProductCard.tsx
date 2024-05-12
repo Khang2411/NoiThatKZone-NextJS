@@ -23,7 +23,7 @@ export function ProductCard({ product }: Props) {
     const { checkStock, addToCart } = useCart({ enabled: false })
     const { mutate: mutateCartUser } = useCartDetails({ enabled: isLoggedIn ? true : false })
     const increaseCart = useCartStore((state) => state.increasePopulation)
-
+    
     const handleCart = async () => {
         if (!isLoggedIn) {
             let cart = JSON.parse(localStorage.getItem('cart') as string) || []
@@ -69,7 +69,7 @@ export function ProductCard({ product }: Props) {
             position: "bottom-right", autoClose: 1000, closeOnClick: true, draggable: true, hideProgressBar: false, theme: "light", transition: Zoom
         });
     }
-
+    
     return (
         <Box height={'100%'}>
             <ToastContainer />

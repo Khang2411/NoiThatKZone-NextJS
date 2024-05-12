@@ -41,7 +41,7 @@ export default async function News({ params }: { params: { id: number } }) {
     return (
         <>
             <Box bgcolor={'#FCFAF6'}>
-                <Box component={'section'} sx={{ width: '100%', maxWidth: '1130px', margin: 'auto', padding: { xs: '5px', md: '25px' } }} >
+                <Box component={'section'} sx={{ width: '100%', maxWidth: '1200px', margin: 'auto', padding: { xs: '8px', md: '25px' } }} >
                     <Stack direction={{ xs: 'column', md: 'row' }} justifyContent='space-between' gap={5}>
                         <Box width={{ xs: '100%', md: '65%' }}>
                             <Box><Typography variant='h5' fontWeight={600}>{post.data.title}</Typography></Box>
@@ -77,7 +77,7 @@ export default async function News({ params }: { params: { id: number } }) {
                                 <Box><Typography fontSize={'20px'} lineHeight={1.8}>Những bài viết liên quan</Typography></Box>
                                 {post.similar?.map((item: { slug: string; id: number; title: string, thumbnail: string }, index: React.Key) =>
                                     <Link href={`/news/${item.slug}/${item.id}`} key={index}>
-                                        <Card sx={{ width: '320px', marginBottom: '15px' }}>
+                                        <Card sx={{ width: { sm: '100%', md: '320px' }, marginBottom: '15px' }}>
                                             <CardContent>
                                                 <Stack direction={'row'} flexDirection={'row-reverse'} justifyContent={'space-between'} gap={2}>
                                                     <Box position={'sticky'}>
@@ -96,7 +96,6 @@ export default async function News({ params }: { params: { id: number } }) {
                                         </Card>
                                     </Link>
                                 )}</Box>
-
                         </Box>
                     </Stack>
                 </Box>

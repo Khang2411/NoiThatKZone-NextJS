@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Box, IconButton, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type Props = {
     cart: Cart[] | undefined,
@@ -58,10 +59,14 @@ export function CartList({ cart, onRemoveCart, onIncrementCart, onDecrementCart 
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row" align='center'>
-                                        <Stack direction={{ xs: 'column', md: 'row' }} alignItems={'center'} gap={1}>
-                                            <Image src={row.thumbnail} width={150} height={155} alt={'img-cart'}></Image>
-                                            <Typography color={'#415b80'} fontWeight={600}>{row.name}</Typography>
-                                        </Stack>
+
+                                        <Link href={`/${row.slug}/${row.id}`}>
+                                            <Stack direction={{ xs: 'column', md: 'row' }} alignItems={'center'} gap={1}>
+                                                <Image src={row.thumbnail} width={150} height={155} alt={'img-cart'}></Image>
+                                                <Typography color={'#415b80'} fontWeight={600}>{row.name}</Typography>
+                                            </Stack>
+                                        </Link>
+
                                     </TableCell>
                                     <TableCell align="center">
                                         {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(row.price)}

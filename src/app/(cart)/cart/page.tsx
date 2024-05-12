@@ -121,7 +121,7 @@ export default function Cart() {
                 description: 'Giò hàng nội thất kzone'
             }} />
             <Box>
-                <Box component={'section'} sx={{ width: '100%', maxWidth: '1920px', margin: 'auto', paddingBlockStart: '55px' }}>
+                <Box component={'section'} sx={{ width: '100%', maxWidth: '1460px', margin: 'auto', paddingBlockStart: '55px' }}>
                     <Box textAlign={'center'}><Typography variant='h4' color={'#415b80'} fontWeight={600} marginBlockEnd={'15px'}>Giỏ Hàng</Typography></Box>
                     {(isLoadingCart === false) && <Stack direction={{ xs: 'column', md: 'row' }} gap={2}>
                         <CartList cart={isLoggedIn ? dataCartUser?.data : dataCart?.data} isLoading={isLoadingCart} onRemoveCart={handleRemoveCart} onIncrementCart={handleIncrementCart}

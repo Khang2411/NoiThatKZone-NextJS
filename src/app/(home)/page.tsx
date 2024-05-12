@@ -57,7 +57,7 @@ export default async function Home() {
             }} />
 
             <Box>
-                <Box component={'section'} sx={{ width: '100%', maxWidth: '1480px', margin: 'auto' }}>
+                <Box component={'section'}>
                     <Hero heroList={homeBanner.data.sliders}></Hero>
                 </Box>
                 <Box sx={{ width: '100%', maxWidth: '1460px', margin: 'auto' }}>

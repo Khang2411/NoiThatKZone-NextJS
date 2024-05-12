@@ -95,7 +95,7 @@ export default function Checkouts() {
 
   return (
     <>
-      <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>
+      <Box sx={{ width: '100%', maxWidth: '1360px', margin: 'auto' }}>
         <Stack direction={{ xs: 'column-reverse', md: 'row' }} gap={2}>
           <Box flex={1} padding={'25px'}>
             <Box textAlign={'right'}>

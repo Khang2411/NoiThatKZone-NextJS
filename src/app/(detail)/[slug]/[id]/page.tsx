@@ -58,7 +58,7 @@ export default async function ProductDetail({ params }: { params: { id: number }
         <>
             <Box component='section'>
                 <ToastContainer />
-                <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto', padding: '20px' }}>
+                <Box sx={{ width: '100%', maxWidth: '1460px', margin: 'auto', padding: '20px' }}>
                     <BreadcrumbList breadcrumb={product.data}></BreadcrumbList>
                     <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'} bgcolor={'#FFFFFF'}>
                         <Box width={{ xs: '100%', md: '43%' }}>

@@ -54,7 +54,7 @@ export default function Collections({ params }: CollectionsProps) {
         description: `${dataCollection?.data.name} - Những nội thất trong và ngoài nước được lựa chọn kỹ.`,
       }} />
 
-      <Box sx={{ width: '100%', maxWidth: '1380px', margin: 'auto' }}>
+      <Box sx={{ width: '100%', maxWidth: '1460px', margin: 'auto' }}>
         <Box paddingBlock={'15px'}>
           <BreadcrumbList breadcrumb={dataCollection?.data}></BreadcrumbList>
         </Box>
