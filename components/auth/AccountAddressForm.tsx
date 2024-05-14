@@ -21,8 +21,9 @@ export function AccountAddressForm({ onSubmit, cities }: AccountAddressProps) {
 
     const schema = yup.object().shape({
         phone: yup
-        .string()
-        .required('Vui lòng nhập SĐT'),
+            .string()
+            .matches(/^(\+84|84|0)[0-9]{9}$/, 'SĐT không hợp lệ')
+            .required('Vui lòng nhập SĐT'),
         apartment_number: yup
             .string()
             .required('Vui lòng nhập số nhà'),
@@ -70,7 +71,7 @@ export function AccountAddressForm({ onSubmit, cities }: AccountAddressProps) {
 
     return (
         <Box component="form" onSubmit={handleSubmit(handleLoginSubmit)}>
-            <InputField name="phone" label="Sđt" control={control} sx={{ marginBlockEnd: '15px' }} />
+            <InputField name="phone" label="SĐT" control={control} sx={{ marginBlockEnd: '15px' }} />
             <InputField name="apartment_number" label="Số nhà" control={control} sx={{ marginBlockEnd: '15px' }} />
 
             <Stack direction={'row'} gap={2}>
