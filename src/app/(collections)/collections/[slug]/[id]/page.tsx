@@ -11,13 +11,14 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { useCallback } from 'react'
 import Loading from './loading'
 import Seo from '@/components/common/Seo'
+import NotFound from '@/src/app/not-found'
 
 type CollectionsProps = {
   params: { id: number, slug: string }
 }
 
 export default function Collections({ params }: CollectionsProps) {
-  const { data: dataCollection } = useCollectionDetails({ collectionId: params.id })
+  const { data: dataCollection, error } = useCollectionDetails({ collectionId: params.id })
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -46,7 +47,7 @@ export default function Collections({ params }: CollectionsProps) {
   };
 
   if (isLoading) return <Box className="skeleton"><Loading></Loading></Box>;
-  console.log(listings)
+  if (error) return <><NotFound /></>
   return (
     <>
       <Seo data={{

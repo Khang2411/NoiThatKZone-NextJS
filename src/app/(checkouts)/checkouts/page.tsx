@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Loading from './loading'
+import NotFound from '../../not-found'
 
 export default function Checkouts() {
   const router = useRouter()
@@ -23,8 +24,8 @@ export default function Checkouts() {
   const [stateCart, setStateCart] = useState(typeof window !== 'undefined' && JSON.parse(localStorage.getItem('cart') || '{}'))
   const [coupon, setCoupon] = useState<ResponseCoupon>({ data: null })
   const { data: cities } = useRegionList();
-  const { data: dataCart, addCoupon, isLoading: isLoadingCart } = useCart({ params: { product: stateCart }, enabled: (isLoadingLoggedIn === false && isLoggedIn === false) ? true : false })
-  const { data: dataCartUser, isLoading } = useCartDetails({ enabled: (isLoadingLoggedIn === false && isLoggedIn) ? true : false })
+  const { data: dataCart, addCoupon, isLoading: isLoadingCart, error: cartError } = useCart({ params: { product: stateCart }, enabled: (isLoadingLoggedIn === false && isLoggedIn === false) ? true : false })
+  const { data: dataCartUser, isLoading, error: cartUserError } = useCartDetails({ enabled: (isLoadingLoggedIn === false && isLoggedIn) ? true : false })
   const { data: couponData } = useCoupon({ params: { total: isLoggedIn ? dataCartUser?.total : dataCart?.total, coupon: useSearchParams().get('coupon') }, enabled: isLoading || isLoadingCart })
   const { checkout, checkoutMomo, checkoutVnpay } = useCheckout()
   const removeAllCart = useCartStore((state) => state.removeAllCart)
@@ -92,7 +93,7 @@ export default function Checkouts() {
   }
 
   if (isLoadingLoggedIn === true || isLoadingCart === true || isLoading === true) return <Box><Loading></Loading></Box>;
-
+  if (cartError || cartUserError) return <><NotFound /></>
   return (
     <>
       <Box sx={{ width: '100%', maxWidth: '1360px', margin: 'auto' }}>
