@@ -32,7 +32,8 @@ export function RegisterForm({ onSubmit, cities }: registerFormProps) {
             .email(),
         phone: yup
             .string()
-            .required('Không được trống'),
+            .matches(/^(\+84|84|0)[0-9]{9}$/, 'SĐT không hợp lệ')
+            .required('Vui lòng nhập SĐT'),
         password: yup
             .string()
             .required('Vui lòng nhập Password')
