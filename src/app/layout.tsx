@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Nội Thất KZone',
   description: 'Nội thất được cung cấp bởi nguồn hàng đa dạng trong và ngoài nước với tiêu chi chắc chắn, bền bỉ.',
   keywords: ['NoiThatKZone', 'Nội Thất', 'Nhà cửa', 'noi that', 'nha cua', 'kzone'],
-  metadataBase: new URL("https://www.noithatkzone.online"),
+  metadataBase: new URL("https://www.noithatkzone.shop"),
 }
 
 export default function RootLayout({
