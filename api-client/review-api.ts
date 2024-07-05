@@ -3,7 +3,7 @@ import axiosClient from './axios-client'
 
 export const reviewApi = {
     get(params: number): Promise<ListResponse<Review>> {
-        return axiosClient.get(`/v1/reviews/`, { params })
+        return axiosClient.get(`/v1/reviews`, { params })
     },
 
     add(payload: Partial<Review>) {
