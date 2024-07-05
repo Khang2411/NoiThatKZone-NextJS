@@ -17,7 +17,7 @@ const handler = NextAuth({
   callbacks: {
     async signIn({ user, account }) {
       let params = { ...user, provider_id: user.id, provider: account?.provider }
-      const response = await fetch(`${process.env.API_URL}/api/v1/social/login`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/social/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
