@@ -10,27 +10,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const getHomeProducts = async () => {
-    const res = await fetch(`${process.env.API_URL}/api/v1/home/best-seller`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/best-seller`, {
         next: { revalidate: 300 }
     })
     return res.json();
 }
 const getHomeCollection = async () => {
-    const res = await fetch(`${process.env.API_URL}/api/v1/home/collections`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/collections`, {
         next: { revalidate: 300 }
     })
     return res.json();
 }
 
 const getHomePosts = async (params: { limit: number }) => {
-    const res = await fetch(`${process.env.API_URL}/api/v1/home/posts?limit=${params.limit}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/posts?limit=${params.limit}`, {
         next: { revalidate: 300 }
     })
     return res.json();
 }
 
 const getHomeBanner = async () => {
-    const res = await fetch(`${process.env.API_URL}/api/v1/home/banner`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/banner`, {
         next: { revalidate: 300 }
     })
     return res.json();
