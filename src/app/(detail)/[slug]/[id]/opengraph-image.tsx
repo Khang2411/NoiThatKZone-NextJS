@@ -11,7 +11,7 @@ export const size = {
 }
 
 export default async function Image({ params }: { params: { id: number } }) {
-  const product = await fetch(`${process.env.API_URL}/api/v1/listings/${params.id}`).then((res) => res.json())
+  const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/listings/${params.id}`).then((res) => res.json())
   return new ImageResponse(
     (
       <>
