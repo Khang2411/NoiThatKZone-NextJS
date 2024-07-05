@@ -4,12 +4,12 @@ const nextConfig = {
         return [
             {
                 source: "/api/auth/:path*",
-                destination: "/api/auth/:path*",
-            },
-            {
-                source: '/api/:path*',
-                destination: `${process.env.API_URL}/api/:path*`, // Proxy to Backend
-            },
+                destination: "/api/auth/:path*"
+            }
+            // {
+            //     source: '/api/:path*',
+            //     destination: `${process.env.API_URL}/api/:path*`, // Proxy to Backend
+            // },
         ]
     },
     images: {
