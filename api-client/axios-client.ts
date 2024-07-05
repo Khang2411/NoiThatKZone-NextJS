@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: '/api',
+    baseURL: 'https://admin.noithatkzone.shop/api',
     headers: { 'Content-Type': 'application/json' }
 });
 
