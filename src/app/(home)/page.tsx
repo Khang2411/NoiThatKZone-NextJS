@@ -70,7 +70,6 @@ export default function Home() {
                         <Box sx={{ background: '#ffff', borderRadius: '15px' }}>
                             <Typography variant='h5' fontWeight={600} padding={'20px'} color={'#415b80'}>DANH MỤC NỔI BẬT</Typography>
                             <CollectionList collectionList={homeCollection?.data}></CollectionList>
-                            12333
                         </Box>
                     </Box>
 

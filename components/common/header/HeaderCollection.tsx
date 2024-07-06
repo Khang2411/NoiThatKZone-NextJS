@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 
 export function HeaderCollection() {
     const pathname = usePathname()
-    console.log(pathname)
+    // console.log(pathname)
     const { data: dataCollections } = useCollectionHomeList({ enabled: pathname === ('/reset-password' || '/forgot-password' || '/login' || "/register") ? false : true })
 
     return (
