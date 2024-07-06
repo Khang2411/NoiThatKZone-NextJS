@@ -21,6 +21,5 @@ export function useProductDetails({ productId, options }: UseWorkDetailsProps) {
         }
     )
 
-
     return swrResponse
 }

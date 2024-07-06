@@ -53,7 +53,7 @@ export function ResetPasswordForm() {
     } = useForm<ResetPasswordPayload>({
         defaultValues: {
             token: searchParams.get('token') || "",
-            email: '',
+            email: searchParams.get('email') || "",
             password: '',
             password_confirmation: '',
         },

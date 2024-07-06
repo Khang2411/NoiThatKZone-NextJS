@@ -2,7 +2,7 @@ import { ListResponse, ReplyPayload, Review } from '@/models'
 import axiosClient from './axios-client'
 
 export const reviewApi = {
-    get(params: number): Promise<ListResponse<Review>> {
+    get(params: {product_id:number,page:number,limit:number}): Promise<ListResponse<Review>> {
         return axiosClient.get(`/v1/reviews`, { params })
     },
 

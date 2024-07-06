@@ -1,53 +1,58 @@
+'use client'
 import { BannerList } from '@/components/banner'
 import { CollectionList } from '@/components/category'
 import Seo from '@/components/common/Seo'
 import { Hero } from '@/components/hero'
 import { NewsList } from '@/components/news'
 import { ProductList } from '@/components/product'
+import { useBanner, useBestSeller, useCollectionHomeList, usePost } from '@/hook'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
 import { Box, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
+import Loading from './Loading'
 
-const getHomeProducts = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/best-seller`, {
-        next: { revalidate: 300 }
-    })
-    return res.json();
-}
-const getHomeCollection = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/collections`, {
-        next: { revalidate: 300 }
-    })
-    return res.json();
-}
+/* SSR fetch + metadata */
 
-const getHomePosts = async (params: { limit: number }) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/posts?limit=${params.limit}`, {
-        next: { revalidate: 300 }
-    })
-    return res.json();
-}
+// const getHomeProducts = async () => {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/best-seller`, {
+//         next: { revalidate: 300 }
+//     })
+//     return res.json();
+// }
+// const getHomeCollection = async () => {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/collections`, {
+//         next: { revalidate: 300 }
+//     })
+//     return res.json();
+// }
 
-const getHomeBanner = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/banner`, {
-        next: { revalidate: 300 }
-    })
-    return res.json();
-}
+// const getHomePosts = async (params: { limit: number }) => {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/posts?limit=${params.limit}`, {
+//         next: { revalidate: 300 }
+//     })
+//     return res.json();
+// }
 
-export default async function Home() {
-    const homeProducts = await getHomeProducts()
-    const homeCollection = await getHomeCollection()
-    const homePosts = await getHomePosts({ limit: 3 })
-    const homeBanner = await getHomeBanner()
+// const getHomeBanner = async () => {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/home/banner`, {
+//         next: { revalidate: 300 }
+//     })
+//     return res.json();
+// }
 
-    // const { data: dataCollection } = useCollectionHomeList({})
-    // const { data: dataProduct } = useBestSeller({})
-    // const { data: dataPost } = usePost({ params: { limit: 3 } })
-    // const { data: dataBanner, isLoading } = useBanner({})
+export default function Home() {
+    // const homeProducts = await getHomeProducts()
+    // const homeCollection = await getHomeCollection()
+    // const homePosts = await getHomePosts({ limit: 3 })
+    // const homeBanner = await getHomeBanner()
 
-    // if (isLoading) return <Loading></Loading>
+    const { data: homeCollection } = useCollectionHomeList({})
+    const { data: homeProducts } = useBestSeller({})
+    const { data: homePosts } = usePost({ params: { limit: 3 } })
+    const { data: homeBanner, isLoading } = useBanner({})
+
+    if (isLoading) return <Loading></Loading>
 
     return (
         <>
@@ -58,24 +63,24 @@ export default async function Home() {
 
             <Box>
                 <Box component={'section'} sx={{ width: '100%', maxWidth: '1920px', margin: 'auto' }}>
-                    <Hero heroList={homeBanner.data.sliders}></Hero>
+                    <Hero heroList={homeBanner?.data.sliders}></Hero>
                 </Box>
                 <Box sx={{ width: '100%', maxWidth: '1460px', margin: 'auto' }}>
                     <Box component={'section'} padding={'15px'}>
                         <Box sx={{ background: '#ffff', borderRadius: '15px' }}>
                             <Typography variant='h5' fontWeight={600} padding={'20px'} color={'#415b80'}>DANH MỤC NỔI BẬT</Typography>
-                            <CollectionList collectionList={homeCollection.data}></CollectionList>
+                            <CollectionList collectionList={homeCollection?.data}></CollectionList>
                         </Box>
                     </Box>
 
                     <Box component={'section'}>
-                        <BannerList bannerList={homeBanner.data.banners!} ></BannerList>
+                        <BannerList bannerList={homeBanner?.data.banners!} ></BannerList>
                     </Box>
 
                     <Box component={'section'}>
                         <Box sx={{ background: '#ffff', marginBlockEnd: '35px', borderRadius: '15px' }}>
                             <Typography variant='h5' fontWeight={600} padding={'25px'} color={'#415b80'}>SẢN PHẨM BÁN CHẠY <LocalFireDepartmentIcon fontSize='large' sx={{ color: '#CD1817' }} /></Typography>
-                            <ProductList productList={homeProducts.data.list_best_seller}></ProductList>
+                            <ProductList productList={homeProducts?.data.list_best_seller}></ProductList>
                             <Box textAlign={'center'} padding={'18px'}>
                                 <Link href={'/'}>
                                     {/* <Button variant="contained" size='small' sx={{ backgroundColor: '#ff8080 !important', borderRadius: '20px' }}>
@@ -89,7 +94,7 @@ export default async function Home() {
                     <Box component={'section'}>
                         <Box sx={{ background: '#ffff', borderRadius: '15px' }}>
                             <Typography variant='h5' fontWeight={600} padding={'25px'} color={'#415b80'}>NỘI THẤT VĂN PHÒNG NỔI BẬT</Typography>
-                            <ProductList productList={homeProducts.data.list_featured_office}></ProductList>
+                            <ProductList productList={homeProducts?.data.list_featured_office}></ProductList>
                             <Box textAlign={'center'} padding={'18px'}>
                                 <Link href={'/'}>
                                     {/* <Button variant="contained" size='small' sx={{ backgroundColor: '#ff8080 !important', borderRadius: '20px' }}>
@@ -121,7 +126,7 @@ export default async function Home() {
                     </Box>
                     <Box component={'section'}>
                         <Box sx={{ background: '#ffff', borderRadius: '15px' }}>
-                            <NewsList newsList={homePosts.data}></NewsList>
+                            <NewsList newsList={homePosts?.data}></NewsList>
                         </Box>
                     </Box>
                 </Box>

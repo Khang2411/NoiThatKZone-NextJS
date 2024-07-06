@@ -31,7 +31,7 @@ export default function Loading() {
                                     )}
                                 </Grid>
                             </Box>
-                            <Grid container direction={'row'} flexWrap={'wrap'} gap={2}>
+                            <Grid container direction={'row'} flexWrap={'wrap'} gap={2} alignItems="center" justifyContent={'center'}>
                                 {Array.from(new Array(12)).map((item: any, index: React.Key | null | undefined) =>
                                     <Skeleton key={index} variant="rectangular" width={255} height={200} animation="wave" />
                                 )}

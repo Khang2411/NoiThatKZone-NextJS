@@ -14,7 +14,7 @@ export const listingApi = {
         return axiosClient.get(`/v1/listings/${productId}/similar`)
     },
 
-    async get(id: number): Promise<Product> {
+    async get(id: number): Promise<Response<Product>> {
         return axiosClient.get(`/v1/listings/${id}`)
     },
 }
