@@ -47,7 +47,7 @@ export default function Home() {
     // const homePosts = await getHomePosts({ limit: 3 })
     // const homeBanner = await getHomeBanner()
 
-    const { data: homeCollection } = useCollectionHomeList({})
+    const { data: homeCollection } = useCollectionHomeList({enabled:true})
     const { data: homeProducts } = useBestSeller({})
     const { data: homePosts } = usePost({ params: { limit: 3 } })
     const { data: homeBanner, isLoading } = useBanner({})
@@ -70,6 +70,7 @@ export default function Home() {
                         <Box sx={{ background: '#ffff', borderRadius: '15px' }}>
                             <Typography variant='h5' fontWeight={600} padding={'20px'} color={'#415b80'}>DANH MỤC NỔI BẬT</Typography>
                             <CollectionList collectionList={homeCollection?.data}></CollectionList>
+                            12333
                         </Box>
                     </Box>
 

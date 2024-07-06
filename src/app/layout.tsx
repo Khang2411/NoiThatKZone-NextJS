@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.noithatkzone.shop"),
 }
 
+export const maxDuration = 60;
+
 export default function RootLayout({
   children
 }: {
