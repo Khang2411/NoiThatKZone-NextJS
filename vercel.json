@@ -4,10 +4,10 @@
       "maxDuration": 60
     }
   },
-  "routes": [
+"rewrites": [
     {
-        "src": "/api/:path*",
-        "dest": "https://admin.noithatkzone.shop/api/:path*"
+      "source": "/api/:path*",
+      "destination": "https://admin.noithatkzone.shop/api/:path*"
     }
-   ]
+  ]
 }
